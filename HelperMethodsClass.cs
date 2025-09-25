@@ -132,3 +132,72 @@ public static class HelperMethodsFormat
         Console.ReadLine();
     }
 }
+
+public static class HelperMethodsPropertySetter
+{
+    public static string SetterStringNotEmpty(string value, string currentValue, string message = "Faulty assignment, must not be null or empty.\nReverting to previous value, if previous is null, value will be \"ERROR\"")
+    {
+        if (!String.IsNullOrEmpty(value))
+        {
+            return value;
+        }
+        else
+        {
+            Console.WriteLine(message);
+            if (!String.IsNullOrEmpty(currentValue))
+            {
+                Console.WriteLine($"Value set to previous: {currentValue}");
+                return currentValue;
+            }
+            else
+            {
+                Console.WriteLine("Value set to: ERROR - Faulty Value");
+                return "ERROR - Faulty Value";
+            }
+        }
+    }
+
+    public static double SetterDoublePositive(double value, double currentValue, string message = "Faulty assignment, must be above or equal to 0.\nReverting to previous value, if previous is invalid, value is set to 0")
+    {
+        if (value >= 0)
+        {
+            return value;
+        }
+        else
+        {
+            Console.WriteLine(message);
+            if (currentValue >= 0)
+            {
+                Console.WriteLine($"Value set to previous value: {currentValue}");
+                return currentValue;
+            }
+            else
+            {
+                Console.WriteLine("Value set to 0");
+                return 0;
+            }
+        }
+    }
+
+    public static int SetterIntPositive(int value, int currentValue, string message = "Faulty assignment, must be above or equal to 0.\nReverting to previous value, if previous is invalid, value is set to 0")
+    {
+        if (value > 0)
+        {
+            return value;
+        }
+        else
+        {
+            Console.WriteLine(message);
+            if (currentValue > 0)
+            {
+                Console.WriteLine($"Value set to previous value: {currentValue}");
+                return currentValue;
+            }
+            else
+            {
+                Console.WriteLine("Value set to 0");
+                return 0;
+            }
+        }
+    }
+}
